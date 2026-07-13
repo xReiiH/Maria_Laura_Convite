@@ -13,96 +13,10 @@
   pointer-events: none;
 }
 
-.hero__sun {
-  position: absolute;
-  top: var(--space-6);
-  right: var(--space-7);
-  width: calc(var(--space-8) * 5);
-  aspect-ratio: 1;
-  border-radius: var(--radius-full);
-  background: radial-gradient(circle, var(--color-yellow), var(--color-transparent));
-  isolation: isolate;
-}
-
-.hero__sun::before {
-  position: absolute;
-  inset: calc(var(--space-8) * -1);
-  border-radius: var(--radius-full);
-  background: radial-gradient(circle, var(--color-yellow), var(--color-transparent));
-  content: "";
-  filter: blur(calc(var(--space-8) / 2));
-  z-index: -1;
-}
-
+.hero__sun,
 .hero__clouds,
 .hero__stars {
-  position: absolute;
-  inset: 0;
-}
-
-.hero__cloud {
-  position: absolute;
-  width: calc(var(--space-8) * 3);
-  height: var(--space-6);
-  border-radius: var(--radius-full);
-  background: var(--color-cloud);
-  animation: cloud-drift 18s ease-in-out infinite alternate;
-}
-
-.hero__cloud::before,
-.hero__cloud::after {
-  position: absolute;
-  border-radius: var(--radius-full);
-  background: var(--color-cloud);
-  content: "";
-}
-
-.hero__cloud::before {
-  width: var(--space-7);
-  height: var(--space-7);
-  bottom: var(--space-3);
-  left: var(--space-4);
-}
-
-.hero__cloud::after {
-  width: var(--space-6);
-  height: var(--space-6);
-  right: var(--space-4);
-  bottom: var(--space-2);
-}
-
-.hero__cloud--1 {
-  top: var(--space-7);
-  left: var(--space-6);
-}
-
-.hero__cloud--2 {
-  top: var(--space-8);
-  right: var(--space-7);
-  width: calc(var(--space-8) * 2);
-  height: var(--space-5);
-  animation-duration: 24s;
-}
-
-.hero__cloud--3 {
-  bottom: calc(var(--space-8) * 2);
-  left: calc(var(--space-8) * 4);
-  width: calc(var(--space-8) * 4);
-  height: var(--space-7);
-  animation-duration: 30s;
-}
-
-.hero__stars {
-  --star-core: calc(var(--space-1) / 4);
-  --star-edge: calc(var(--space-1) / 2);
-
-  background-image:
-    radial-gradient(circle at 12% 18%, var(--color-white) 0 var(--star-core), var(--color-transparent) var(--star-edge)),
-    radial-gradient(circle at 38% 28%, var(--color-white) 0 var(--star-core), var(--color-transparent) var(--star-edge)),
-    radial-gradient(circle at 64% 14%, var(--color-white) 0 var(--star-core), var(--color-transparent) var(--star-edge)),
-    radial-gradient(circle at 82% 38%, var(--color-white) 0 var(--star-core), var(--color-transparent) var(--star-edge));
-  filter: drop-shadow(0 0 var(--star-edge) var(--color-white));
-  animation: twinkle 6s ease-in-out infinite alternate;
+  display: none;
 }
 
 .hero > .container {
@@ -121,6 +35,36 @@
   gap: var(--space-5);
 }
 
+.hero__eyebrow {
+  width: fit-content;
+}
+
+.hero__title {
+  max-width: calc(var(--container) / 2);
+  font-size: calc(var(--font-size-2xl) * 2);
+}
+
+.hero__highlight {
+  display: block;
+  color: var(--color-red);
+}
+
+.hero__subtitle,
+.hero__description {
+  max-width: calc(var(--container) / 2);
+}
+
+.hero__description {
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+.hero__actions {
+  display: flex;
+  align-items: center;
+}
+
 .hero__image {
   position: relative;
   display: grid;
@@ -128,35 +72,43 @@
   width: var(--width-full);
 }
 
-.hero__photo {
+.hero__photo-wrapper {
   position: relative;
   width: var(--width-full);
+  max-width: calc(var(--container) / 2);
+  aspect-ratio: 4 / 5;
 }
 
-.hero__photo-frame,
-.hero__photo-glow,
-.hero__decorations {
+.hero__photo-frame {
+  position: relative;
+  width: var(--width-full);
+  height: var(--width-full);
+  padding: var(--space-3);
+  background: var(--color-white);
+  box-shadow: var(--shadow-xl);
+}
+
+.hero__photo {
+  display: block;
+  width: var(--width-full);
+  height: var(--width-full);
+  object-fit: cover;
+}
+
+.hero__photo-glow {
   position: absolute;
-  inset: 0;
+  inset: calc(var(--space-6) * -1);
+  background: radial-gradient(circle, var(--color-yellow), var(--color-transparent));
+  filter: blur(var(--space-6));
 }
 
+.hero__theme-badge {
+  position: absolute;
+  top: var(--space-5);
+  right: calc(var(--space-5) * -1);
+}
+
+.hero__decorations,
 .hero__scroll {
-  position: absolute;
-  inset-inline: 0;
-  bottom: var(--space-5);
-  display: flex;
-  justify-content: center;
-  pointer-events: none;
-}
-
-@keyframes cloud-drift {
-  to {
-    transform: translateX(var(--space-5));
-  }
-}
-
-@keyframes twinkle {
-  to {
-    opacity: 0.65;
-  }
+  display: none;
 }
