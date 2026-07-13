@@ -1,1 +1,52 @@
-/* Responsabilidade: reservar os estilos da seção Hero. */
+.hero {
+  --hero-column-width: calc(var(--container) / 2);
+
+  position: relative;
+  display: flex;
+  align-items: center;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+.hero__background {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.hero__sun {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle, var(--color-yellow), var(--color-transparent));
+}
+
+.hero__clouds,
+.hero__stars {
+  position: absolute;
+  inset: 0;
+}
+
+.hero__cloud {
+  position: absolute;
+}
+
+.hero > .container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: var(--space-7);
+}
+
+.hero__content,
+.hero__image {
+  width: var(--hero-column-width);
+}
+
+.hero__scroll {
+  position: absolute;
+  inset-inline: 0;
+  bottom: var(--space-5);
+  display: flex;
+  justify-content: center;
+  pointer-events: none;
+}
