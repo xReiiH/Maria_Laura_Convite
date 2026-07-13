@@ -1,1 +1,27 @@
-/* Responsabilidade: organizar estilos das seções de conteúdo do convite. */
+/* Responsabilidade: organizar a estrutura e o espaçamento das seções de conteúdo do convite. */
+
+.info-section {
+  padding-block: var(--space-8);
+}
+
+.info-section > .container {
+  display: grid;
+  gap: var(--space-8);
+}
+
+.section-header {
+  display: grid;
+  gap: var(--space-4);
+  max-width: calc(var(--container) / 2);
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--space-5);
+}
+
+.info-card {
+  width: var(--width-full);
+  min-height: calc(var(--space-8) * 3);
+}
