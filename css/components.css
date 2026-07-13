@@ -1,0 +1,91 @@
+.container {
+  width: min(var(--container), var(--width-full));
+  margin-inline: auto;
+  padding-inline: var(--space-5);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: var(--space-7);
+  padding: var(--space-3) var(--space-5);
+  border: var(--border-width) solid var(--color-transparent);
+  border-radius: var(--radius-full);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-tight);
+  text-align: center;
+  transition: background var(--transition-normal), color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-fast);
+}
+
+.btn:hover {
+  transform: var(--motion-lift);
+}
+
+.btn:focus-visible {
+  outline: var(--border-width) solid var(--color-blue);
+  outline-offset: var(--space-1);
+}
+
+.btn-primary {
+  background: var(--color-red);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-white);
+}
+
+.btn-primary:hover {
+  background: var(--color-red-dark);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-secondary {
+  border-color: var(--color-border);
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  color: var(--color-blue);
+}
+
+.btn-secondary:hover {
+  border-color: var(--color-blue);
+  box-shadow: var(--shadow-md);
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-full);
+  background: var(--color-yellow);
+  color: var(--color-title);
+  font-family: var(--font-body);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.card {
+  padding: var(--space-6);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-white);
+  box-shadow: var(--shadow-md);
+}
+
+.section-title {
+  color: var(--color-title);
+  font-family: var(--font-title);
+  font-size: var(--font-size-2xl);
+  font-weight: var(--font-weight-bold);
+  line-height: var(--line-height-tight);
+}
+
+.section-subtitle {
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+}

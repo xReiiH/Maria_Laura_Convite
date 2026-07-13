@@ -1,0 +1,82 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+figure,
+blockquote {
+  margin: 0;
+}
+
+body {
+  min-height: 100vh;
+  overflow-x: hidden;
+  background: var(--color-cloud);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  border: 0;
+  cursor: pointer;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+section {
+  padding-block: var(--space-8);
+}
+
+::selection {
+  background: var(--color-yellow);
+  color: var(--color-title);
+}
+
+::-webkit-scrollbar {
+  width: var(--space-2);
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-sky-light);
+}
+
+::-webkit-scrollbar-thumb {
+  border: var(--border-width) solid var(--color-sky-light);
+  border-radius: var(--radius-full);
+  background: var(--color-blue);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-title);
+}
