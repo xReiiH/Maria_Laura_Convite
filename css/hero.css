@@ -4,6 +4,7 @@
   align-items: center;
   min-height: 100vh;
   overflow: hidden;
+  background: linear-gradient(to bottom, var(--color-sky), var(--color-sky-light));
 }
 
 .hero__background {
@@ -14,8 +15,23 @@
 
 .hero__sun {
   position: absolute;
-  inset: 0;
+  top: var(--space-6);
+  right: var(--space-7);
+  width: calc(var(--space-8) * 5);
+  aspect-ratio: 1;
+  border-radius: var(--radius-full);
   background: radial-gradient(circle, var(--color-yellow), var(--color-transparent));
+  isolation: isolate;
+}
+
+.hero__sun::before {
+  position: absolute;
+  inset: calc(var(--space-8) * -1);
+  border-radius: var(--radius-full);
+  background: radial-gradient(circle, var(--color-yellow), var(--color-transparent));
+  content: "";
+  filter: blur(calc(var(--space-8) / 2));
+  z-index: -1;
 }
 
 .hero__clouds,
@@ -26,6 +42,67 @@
 
 .hero__cloud {
   position: absolute;
+  width: calc(var(--space-8) * 3);
+  height: var(--space-6);
+  border-radius: var(--radius-full);
+  background: var(--color-cloud);
+  animation: cloud-drift 18s ease-in-out infinite alternate;
+}
+
+.hero__cloud::before,
+.hero__cloud::after {
+  position: absolute;
+  border-radius: var(--radius-full);
+  background: var(--color-cloud);
+  content: "";
+}
+
+.hero__cloud::before {
+  width: var(--space-7);
+  height: var(--space-7);
+  bottom: var(--space-3);
+  left: var(--space-4);
+}
+
+.hero__cloud::after {
+  width: var(--space-6);
+  height: var(--space-6);
+  right: var(--space-4);
+  bottom: var(--space-2);
+}
+
+.hero__cloud--1 {
+  top: var(--space-7);
+  left: var(--space-6);
+}
+
+.hero__cloud--2 {
+  top: var(--space-8);
+  right: var(--space-7);
+  width: calc(var(--space-8) * 2);
+  height: var(--space-5);
+  animation-duration: 24s;
+}
+
+.hero__cloud--3 {
+  bottom: calc(var(--space-8) * 2);
+  left: calc(var(--space-8) * 4);
+  width: calc(var(--space-8) * 4);
+  height: var(--space-7);
+  animation-duration: 30s;
+}
+
+.hero__stars {
+  --star-core: calc(var(--space-1) / 4);
+  --star-edge: calc(var(--space-1) / 2);
+
+  background-image:
+    radial-gradient(circle at 12% 18%, var(--color-white) 0 var(--star-core), var(--color-transparent) var(--star-edge)),
+    radial-gradient(circle at 38% 28%, var(--color-white) 0 var(--star-core), var(--color-transparent) var(--star-edge)),
+    radial-gradient(circle at 64% 14%, var(--color-white) 0 var(--star-core), var(--color-transparent) var(--star-edge)),
+    radial-gradient(circle at 82% 38%, var(--color-white) 0 var(--star-core), var(--color-transparent) var(--star-edge));
+  filter: drop-shadow(0 0 var(--star-edge) var(--color-white));
+  animation: twinkle 6s ease-in-out infinite alternate;
 }
 
 .hero > .container {
@@ -70,4 +147,16 @@
   display: flex;
   justify-content: center;
   pointer-events: none;
+}
+
+@keyframes cloud-drift {
+  to {
+    transform: translateX(var(--space-5));
+  }
+}
+
+@keyframes twinkle {
+  to {
+    opacity: 0.65;
+  }
 }
