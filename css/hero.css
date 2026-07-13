@@ -1,6 +1,4 @@
 .hero {
-  --hero-column-width: calc(var(--container) / 2);
-
   position: relative;
   display: flex;
   align-items: center;
@@ -32,14 +30,37 @@
 
 .hero > .container {
   position: relative;
-  display: flex;
+  display: grid;
+  grid-template-columns: 42fr 58fr;
   align-items: center;
-  gap: var(--space-7);
+  column-gap: var(--space-7);
+  width: var(--width-full);
+  max-width: var(--container);
 }
 
-.hero__content,
+.hero__content {
+  display: grid;
+  align-content: center;
+  gap: var(--space-5);
+}
+
 .hero__image {
-  width: var(--hero-column-width);
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: var(--width-full);
+}
+
+.hero__photo {
+  position: relative;
+  width: var(--width-full);
+}
+
+.hero__photo-frame,
+.hero__photo-glow,
+.hero__decorations {
+  position: absolute;
+  inset: 0;
 }
 
 .hero__scroll {
