@@ -1,1 +1,352 @@
 /* Responsabilidade: definir ajustes responsivos por breakpoint. */
+
+html {
+  overflow-x: hidden;
+}
+
+@media (min-width: 64rem) and (max-width: 85.3125rem) {
+  .hero > .container {
+    column-gap: var(--space-6);
+  }
+
+  .hero__title {
+    font-size: calc(var(--font-size-2xl) * 2);
+  }
+
+  .hero__photo-wrapper {
+    width: calc(var(--width-full) + var(--space-7));
+  }
+}
+
+@media (max-width: 63.9375rem) {
+  .hero {
+    min-height: 0;
+  }
+
+  .hero > .container {
+    grid-template-columns: minmax(0, 1fr);
+    justify-items: center;
+    row-gap: var(--space-7);
+  }
+
+  .hero__content {
+    justify-items: center;
+    max-width: calc(var(--container) / 2);
+    text-align: center;
+  }
+
+  .hero__title,
+  .hero__subtitle,
+  .hero__description {
+    max-width: var(--width-full);
+  }
+
+  .hero__actions {
+    justify-content: center;
+    width: var(--width-full);
+  }
+
+  .hero__image {
+    max-width: calc(var(--space-8) * 9 + var(--space-7));
+  }
+
+  .hero__photo-wrapper {
+    justify-self: center;
+    width: var(--width-full);
+  }
+
+  .info-grid,
+  .gallery-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .info-card:last-child,
+  .gallery-photo:last-child {
+    grid-column: 1 / -1;
+    justify-self: center;
+    width: calc(50% - var(--space-3));
+  }
+
+  .family-message,
+  .rsvp-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .family-message__content,
+  .rsvp-intro {
+    max-width: calc(var(--container) / 2 + var(--space-8));
+  }
+
+  .family-message__visual {
+    min-height: calc(var(--space-8) * 3);
+  }
+}
+
+@media (max-width: 47.9375rem) {
+  .container {
+    padding-inline: var(--space-4);
+  }
+
+  .hero > .container {
+    padding-block: var(--space-7);
+    row-gap: var(--space-6);
+  }
+
+  .hero__sun {
+    width: calc(var(--space-8) * 5);
+  }
+
+  .hero__cloud--1 {
+    left: var(--space-5);
+  }
+
+  .hero__cloud--2 {
+    right: calc(var(--space-5) * -1);
+  }
+
+  .hero__cloud--3 {
+    bottom: var(--space-6);
+  }
+
+  .hero__stars {
+    opacity: 0.5;
+  }
+
+  .hero__content {
+    gap: var(--space-4);
+  }
+
+  .hero__title {
+    font-size: clamp(var(--font-size-2xl), 10vw, calc(var(--font-size-2xl) + var(--font-size-xl)));
+  }
+
+  .hero__subtitle,
+  .hero__description {
+    font-size: var(--font-size-base);
+  }
+
+  .hero__actions {
+    margin-top: var(--space-3);
+  }
+
+  .hero__actions .btn {
+    width: var(--width-full);
+  }
+
+  .hero__image {
+    max-width: calc(var(--space-8) * 7 + var(--space-7));
+  }
+
+  .hero__theme-badge {
+    right: 0;
+    bottom: var(--space-3);
+  }
+
+  .section-header {
+    gap: var(--space-3);
+    margin-bottom: var(--space-6);
+  }
+
+  .section-title {
+    font-size: clamp(var(--font-size-xl), 8vw, var(--font-size-2xl));
+  }
+
+  .section-subtitle {
+    font-size: var(--font-size-base);
+  }
+
+  .info-section,
+  .countdown-section,
+  .gallery-section,
+  .family-message-section,
+  .rsvp-section {
+    padding-block: var(--space-7);
+  }
+
+  .info-grid,
+  .gallery-grid {
+    grid-template-columns: minmax(0, 1fr);
+    gap: var(--space-6);
+  }
+
+  .info-card,
+  .info-card:last-child,
+  .gallery-photo:last-child {
+    grid-column: auto;
+    width: var(--width-full);
+  }
+
+  .info-card {
+    min-height: 0;
+    padding: var(--space-6);
+  }
+
+  .countdown {
+    gap: var(--space-5);
+    padding: var(--space-6);
+  }
+
+  .countdown__featured {
+    padding: var(--space-5) var(--space-6);
+  }
+
+  .countdown__featured strong {
+    max-width: var(--width-full);
+    font-size: clamp(var(--font-size-2xl), 18vw, calc(var(--font-size-2xl) * 3));
+    overflow-wrap: anywhere;
+  }
+
+  .countdown__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: var(--space-3);
+  }
+
+  .countdown__item {
+    min-height: calc(var(--space-8) + var(--space-7));
+    padding: var(--space-4);
+  }
+
+  .countdown__date {
+    max-width: var(--width-full);
+  }
+
+  .gallery-grid {
+    max-width: calc(var(--container) / 2);
+  }
+
+  .gallery-photo {
+    padding: var(--space-3) var(--space-3) var(--space-5);
+  }
+
+  .gallery-photo--one,
+  .gallery-photo--two,
+  .gallery-photo--three {
+    transform: rotate(0deg);
+  }
+
+  .family-message {
+    gap: var(--space-6);
+    padding: var(--space-6);
+  }
+
+  .family-message__visual {
+    min-height: calc(var(--space-8) * 2);
+  }
+
+  .family-message__heart {
+    font-size: calc(var(--font-size-2xl) * 3);
+  }
+
+  .rsvp-layout {
+    gap: var(--space-6);
+  }
+
+  .rsvp-card {
+    padding: var(--space-6);
+  }
+
+  .form-field input[type="text"],
+  .form-option,
+  .rsvp-form__submit {
+    min-height: calc(var(--space-7) + var(--space-2));
+  }
+
+  .rsvp-form__submit,
+  .rsvp-success {
+    width: var(--width-full);
+  }
+}
+
+@media (max-width: 29.9375rem) {
+  .container {
+    padding-inline: var(--space-3);
+  }
+
+  .hero > .container {
+    padding-block: var(--space-6);
+  }
+
+  .hero__title {
+    font-size: var(--font-size-2xl);
+  }
+
+  .hero__highlight {
+    white-space: normal;
+  }
+
+  .hero__image {
+    max-width: var(--width-full);
+  }
+
+  .hero__photo-frame {
+    padding: var(--space-2);
+  }
+
+  .hero__theme-badge {
+    bottom: 0;
+  }
+
+  .info-card,
+  .countdown,
+  .family-message,
+  .rsvp-card {
+    padding: var(--space-5);
+  }
+
+  .countdown__featured {
+    padding-inline: var(--space-4);
+  }
+
+  .countdown__item {
+    min-height: calc(var(--space-8) + var(--space-6));
+    padding: var(--space-3);
+  }
+
+  .countdown__item strong {
+    font-size: var(--font-size-lg);
+  }
+
+  .family-message__heart {
+    font-size: calc(var(--font-size-2xl) * 2 + var(--font-size-xl));
+  }
+}
+
+@media (hover: none) {
+  .btn:hover,
+  .hero__actions .btn:hover,
+  .info-card:hover,
+  .rsvp-form__submit:hover {
+    transform: none;
+    box-shadow: var(--shadow-sm);
+  }
+
+  .info-card:hover .info-card__icon {
+    transform: none;
+  }
+
+  .gallery-photo--one:hover {
+    transform: rotate(-2deg);
+  }
+
+  .gallery-photo--two:hover {
+    transform: translateY(calc(var(--space-3) * -1)) rotate(1deg);
+  }
+
+  .gallery-photo--three:hover {
+    transform: rotate(2deg);
+  }
+
+  .btn:active,
+  .info-card:active,
+  .rsvp-form__submit:active {
+    transform: scale(0.98);
+  }
+}
+
+@media (hover: none) and (max-width: 47.9375rem) {
+  .gallery-photo--one:hover,
+  .gallery-photo--two:hover,
+  .gallery-photo--three:hover {
+    transform: rotate(0deg);
+  }
+}
