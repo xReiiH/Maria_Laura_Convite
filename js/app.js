@@ -4,10 +4,10 @@
     document.body.classList.add("is-ready");
   };
 
-  if (document.readyState === "complete") {
+  if (document.readyState !== "loading") {
     markPageAsReady();
     return;
   }
 
-  window.addEventListener("load", markPageAsReady, { once: true });
+  document.addEventListener("DOMContentLoaded", markPageAsReady, { once: true });
 })();

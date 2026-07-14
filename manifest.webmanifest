@@ -3,5 +3,7 @@
   "short_name": "Maria Laura",
   "lang": "pt-BR",
   "start_url": "/",
-  "display": "standalone"
+  "display": "standalone",
+  "background_color": "#f6fbff",
+  "theme_color": "#8fd3f4"
 }
