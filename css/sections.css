@@ -103,3 +103,100 @@
   margin-left: var(--space-2);
   content: "→";
 }
+
+.countdown-section {
+  position: relative;
+  padding-block: var(--space-5) var(--space-8);
+}
+
+.countdown-section__header {
+  margin-bottom: var(--space-6);
+}
+
+.countdown {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-6);
+  width: var(--width-full);
+  max-width: calc(var(--container) / 2 + var(--space-8));
+  margin-inline: auto;
+  padding: var(--space-7);
+  overflow: hidden;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-white);
+  box-shadow: var(--shadow-sm);
+  text-align: center;
+}
+
+.countdown::before {
+  position: absolute;
+  top: calc(var(--space-8) * -2);
+  right: calc(var(--space-8) * -2);
+  width: calc(var(--space-8) * 5);
+  aspect-ratio: 1;
+  border-radius: var(--radius-full);
+  background: var(--color-sky-light);
+  content: "";
+  pointer-events: none;
+}
+
+.countdown__featured {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: var(--space-2);
+  padding: var(--space-6) var(--space-8);
+}
+
+.countdown__featured strong {
+  color: var(--color-red);
+  font-family: var(--font-title);
+  font-size: calc(var(--font-size-2xl) * 3);
+  line-height: var(--line-height-tight);
+}
+
+.countdown__featured span,
+.countdown__item span {
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+.countdown__grid {
+  position: relative;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-4);
+  width: var(--width-full);
+  max-width: calc(var(--container) / 2);
+  margin-top: var(--space-2);
+  margin-inline: auto;
+}
+
+.countdown__item {
+  display: grid;
+  place-items: center;
+  gap: var(--space-2);
+  min-height: calc(var(--space-8) * 2 + var(--space-4));
+  padding: var(--space-5);
+  border-radius: var(--radius-lg);
+  background: var(--color-cloud);
+}
+
+.countdown__item strong {
+  color: var(--color-title);
+  font-family: var(--font-title);
+  font-size: var(--font-size-xl);
+  line-height: var(--line-height-tight);
+}
+
+.countdown__date {
+  position: relative;
+  margin: var(--space-4) 0 0;
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-medium);
+  line-height: var(--line-height-normal);
+}
