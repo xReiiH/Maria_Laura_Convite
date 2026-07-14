@@ -53,6 +53,7 @@
   border-radius: var(--radius-full);
   background: var(--color-sky-light);
   color: var(--color-blue);
+  transition: transform var(--transition-fast);
 }
 
 .info-card__icon svg {
@@ -102,6 +103,10 @@
 .info-card__action::after {
   margin-left: var(--space-2);
   content: "→";
+}
+
+.info-card:hover .info-card__icon {
+  transform: scale(1.05);
 }
 
 .countdown-section {
@@ -155,6 +160,7 @@
   font-family: var(--font-title);
   font-size: calc(var(--font-size-2xl) * 3);
   line-height: var(--line-height-tight);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 
 .countdown__featured span,
@@ -190,6 +196,7 @@
   font-family: var(--font-title);
   font-size: var(--font-size-xl);
   line-height: var(--line-height-tight);
+  transition: opacity var(--transition-fast), transform var(--transition-fast);
 }
 
 .countdown__date {
@@ -514,10 +521,42 @@
   box-shadow: var(--shadow-md);
 }
 
+.rsvp-form__submit:hover {
+  box-shadow: var(--shadow-lg);
+}
+
+.rsvp-form__submit:active {
+  transform: translateY(0);
+  box-shadow: var(--shadow-sm);
+}
+
+.rsvp-form__submit:disabled {
+  cursor: not-allowed;
+  opacity: 0.65;
+  transform: none;
+  box-shadow: var(--shadow-sm);
+}
+
 .rsvp-form__status {
   min-height: var(--space-6);
   margin: var(--space-2) 0 0;
   color: var(--color-text);
   font-size: var(--font-size-sm);
   line-height: var(--line-height-normal);
+}
+
+.rsvp-success:not([hidden]) {
+  animation: success-enter var(--transition-slow) both;
+}
+
+.info-section::after {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  height: var(--space-2);
+  background: linear-gradient(to right, var(--color-transparent), var(--color-sky-light), var(--color-transparent));
+  content: "";
+  opacity: 0.6;
+  pointer-events: none;
 }

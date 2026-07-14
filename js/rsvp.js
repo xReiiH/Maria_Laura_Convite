@@ -10,6 +10,7 @@
   const attendanceInputs = Array.from(form.elements.attendance || []);
   const attendanceField = form.querySelector(".form-field--options");
   const submitButton = form.querySelector(".rsvp-form__submit");
+  const GoogleSheets = window.GoogleSheets;
   const status = form.querySelector(".rsvp-form__status");
   const formCard = form.parentElement;
   const originalButtonText = submitButton?.textContent;
@@ -108,8 +109,6 @@
     return { nameIsValid, attendanceIsValid };
   };
 
-  const wait = (milliseconds) => new Promise((resolve) => window.setTimeout(resolve, milliseconds));
-
   const setSubmitting = (isSubmitting) => {
     submitButton.disabled = isSubmitting;
     submitButton.textContent = isSubmitting ? "Confirmando..." : originalButtonText;
@@ -149,24 +148,21 @@
       presenca: selectedAttendance?.value === "sim" ? "Sim" : "Não",
       enviadoEm: new Date().toISOString(),
       origem: window.location.href,
-      userAgent: navigator.userAgent || ""
+      userAgent: navigator.userAgent
     };
 
     setSubmitting(true);
 
     try {
-      if (!window.GoogleSheets) {
+      if (!GoogleSheets) {
         throw new Error("Serviço de confirmação indisponível.");
       }
 
-      const [result] = await Promise.all([window.GoogleSheets.send(payload), wait(800)]);
+      console.log("[RSVP] Payload enviado:", payload);
+      const result = await GoogleSheets.send(payload);
 
-      if (!result?.success) {
+      if (result?.success !== true) {
         throw new Error(result?.error || "Não foi possível enviar a confirmação.");
-      }
-
-      if (result.simulated) {
-        console.info("RSVP simulado: configure a URL do Google Apps Script em js/googleSheets.js para enviar respostas reais.");
       }
 
       setSubmitting(false);

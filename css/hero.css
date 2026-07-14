@@ -39,6 +39,8 @@
   border-radius: var(--radius-full);
   background: var(--color-cloud);
   box-shadow: var(--shadow-sm);
+  will-change: transform;
+  animation: cloud-drift 24s ease-in-out infinite;
 }
 
 .hero__cloud::before,
@@ -73,6 +75,8 @@
   right: var(--space-8);
   width: calc(var(--space-8) * 2);
   height: var(--space-4);
+  animation-duration: 30s;
+  animation-direction: reverse;
 }
 
 .hero__cloud--3 {
@@ -81,10 +85,40 @@
   width: calc(var(--space-8) * 5);
   height: var(--space-7);
   box-shadow: var(--shadow-md);
+  animation-duration: 36s;
 }
 
 .hero__stars {
-  display: none;
+  position: absolute;
+  inset: 0;
+  color: var(--color-white);
+  opacity: 0.75;
+  pointer-events: none;
+}
+
+.hero__stars::before,
+.hero__stars::after {
+  position: absolute;
+  width: var(--space-1);
+  height: var(--space-1);
+  border-radius: var(--radius-full);
+  background: currentColor;
+  content: "";
+  will-change: transform, opacity;
+  animation: twinkle 4s ease-in-out infinite;
+}
+
+.hero__stars::before {
+  top: var(--space-8);
+  right: calc(var(--space-8) * 3);
+  box-shadow: calc(var(--space-8) * -2) var(--space-6) currentColor, var(--space-7) var(--space-8) currentColor;
+}
+
+.hero__stars::after {
+  right: var(--space-8);
+  bottom: calc(var(--space-8) * 2);
+  box-shadow: calc(var(--space-8) * -3) var(--space-7) currentColor, calc(var(--space-8) * -1) calc(var(--space-8) * -1) currentColor;
+  animation-delay: -2s;
 }
 
 .hero > .container {
@@ -145,6 +179,14 @@
   box-shadow: var(--shadow-sm);
 }
 
+.hero__actions .btn:hover {
+  box-shadow: var(--shadow-md);
+}
+
+.hero__actions .btn:active {
+  transform: translateY(0);
+}
+
 .hero__image {
   position: relative;
   display: grid;
@@ -170,6 +212,8 @@
   border-radius: var(--radius-xl);
   background: var(--color-white);
   box-shadow: var(--shadow-md);
+  will-change: transform;
+  animation: photo-float 6s ease-in-out infinite;
 }
 
 .hero__photo {
