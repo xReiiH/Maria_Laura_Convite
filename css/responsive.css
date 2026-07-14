@@ -255,6 +255,12 @@ html {
   .rsvp-success {
     width: var(--width-full);
   }
+
+  .music-toggle {
+    right: max(var(--space-4), env(safe-area-inset-right));
+    bottom: max(var(--space-4), env(safe-area-inset-bottom));
+    width: var(--space-7);
+  }
 }
 
 @media (max-width: 29.9375rem) {
@@ -315,7 +321,8 @@ html {
   .btn:hover,
   .hero__actions .btn:hover,
   .info-card:hover,
-  .rsvp-form__submit:hover {
+  .rsvp-form__submit:hover,
+  .music-toggle:hover {
     transform: none;
     box-shadow: var(--shadow-sm);
   }
@@ -338,7 +345,8 @@ html {
 
   .btn:active,
   .info-card:active,
-  .rsvp-form__submit:active {
+  .rsvp-form__submit:active,
+  .music-toggle:active {
     transform: scale(0.98);
   }
 }

@@ -89,3 +89,64 @@
   font-size: var(--font-size-lg);
   line-height: var(--line-height-normal);
 }
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.music-toggle {
+  position: fixed;
+  right: max(var(--space-5), env(safe-area-inset-right));
+  bottom: max(var(--space-5), env(safe-area-inset-bottom));
+  z-index: 10;
+  display: grid;
+  place-items: center;
+  width: calc(var(--space-7) + var(--space-2));
+  aspect-ratio: 1;
+  padding: 0;
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-full);
+  background: var(--color-white);
+  box-shadow: var(--shadow-md);
+  color: var(--color-red);
+  transition: background var(--transition-normal), color var(--transition-normal), box-shadow var(--transition-normal), transform var(--transition-fast);
+}
+
+.music-toggle:hover {
+  transform: var(--motion-lift);
+  box-shadow: var(--shadow-lg);
+}
+
+.music-toggle:active {
+  transform: translateY(0);
+}
+
+.music-toggle:focus-visible {
+  outline: var(--border-width) solid var(--color-blue);
+  outline-offset: var(--space-1);
+}
+
+.music-toggle.is-playing {
+  border-color: var(--color-red);
+  background: var(--color-red);
+  color: var(--color-white);
+}
+
+.music-toggle__icon::before {
+  display: block;
+  font-family: var(--font-title);
+  font-size: var(--font-size-xl);
+  line-height: 1;
+  content: "♪";
+}
+
+.music-toggle.is-playing .music-toggle__icon::before {
+  content: "Ⅱ";
+}

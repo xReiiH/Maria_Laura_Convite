@@ -85,7 +85,7 @@
                 <h3 class="info-card__title">Quando?</h3>
                 <time class="info-card__value" datetime="2026-08-22">22 de agosto de 2026</time>
                 <p class="info-card__meta">Sábado</p>
-                <time class="info-card__meta" datetime="19:00">19h00</time>
+                <time class="info-card__meta" datetime="19:00">19h00 às 23h00</time>
               </div>
             </article>
             <article class="card info-card">
@@ -258,7 +258,7 @@
                   </label>
                 </fieldset>
 
-                <button type="submit" class="btn btn-primary rsvp-form__submit">Confirmar presença</button>
+                <button type="submit" class="btn btn-primary rsvp-form__submit">Confirmar</button>
                 <p class="rsvp-form__status" aria-live="polite"></p>
               </form>
             </div>
@@ -269,10 +269,20 @@
 
     <footer></footer>
 
+    <audio id="background-music" preload="metadata" loop>
+      <source src="assets/music/musica-convite.mp3" type="audio/mpeg">
+    </audio>
+
+    <button type="button" class="music-toggle" id="music-toggle" aria-label="Ativar música" aria-pressed="false" title="Ativar música">
+      <span class="music-toggle__icon" aria-hidden="true"></span>
+      <span class="sr-only music-toggle__text">Ativar música</span>
+    </button>
+
     <script src="js/app.js" defer></script>
     <script src="js/countdown.js" defer></script>
     <script src="js/googleSheets.js" defer></script>
     <script src="js/rsvp.js" defer></script>
     <script src="js/scrollReveal.js" defer></script>
+    <script src="js/music.js" defer></script>
   </body>
 </html>
