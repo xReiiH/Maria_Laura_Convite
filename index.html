@@ -210,6 +210,49 @@
           </div>
         </div>
       </section>
+
+      <section class="rsvp-section" id="confirmar">
+        <div class="container">
+          <div class="rsvp-layout">
+            <div class="rsvp-intro">
+              <span class="badge rsvp-intro__badge">Esperamos você</span>
+              <h2 class="section-title">Vamos celebrar juntos?</h2>
+              <p class="section-subtitle">Sua presença vai tornar esse dia ainda mais especial para a Maria Laura.</p>
+
+              <div class="rsvp-intro__note">
+                <strong>Confirme até 07 de agosto de 2026.</strong>
+                <span>Assim conseguimos preparar tudo com muito carinho.</span>
+              </div>
+            </div>
+
+            <div class="rsvp-card">
+              <form class="rsvp-form" id="rsvp-form" novalidate>
+                <div class="form-field">
+                  <label for="guest-name">Nome completo</label>
+                  <input type="text" id="guest-name" name="guestName" autocomplete="name" required>
+                </div>
+
+                <fieldset class="form-field form-field--options">
+                  <legend>Você poderá comparecer?</legend>
+
+                  <label class="form-option">
+                    <input type="radio" name="attendance" value="sim" required>
+                    <span>Sim, estarei presente</span>
+                  </label>
+
+                  <label class="form-option">
+                    <input type="radio" name="attendance" value="nao" required>
+                    <span>Não poderei comparecer</span>
+                  </label>
+                </fieldset>
+
+                <button type="submit" class="btn btn-primary rsvp-form__submit">Confirmar presença</button>
+                <p class="rsvp-form__status" aria-live="polite"></p>
+              </form>
+            </div>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer></footer>
