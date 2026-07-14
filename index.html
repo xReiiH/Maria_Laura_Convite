@@ -59,18 +59,57 @@
     </header>
 
     <main>
-      <section class="info-section">
+      <section class="info-section" id="informacoes">
         <div class="container">
-          <div class="section-header">
-            <span class="section-badge">Um dia muito especial</span>
-            <h2 class="section-title">Todas as informações para celebrar conosco</h2>
-            <p class="section-description">No dia 22 de agosto queremos reunir pessoas especiais para viver momentos inesquecíveis ao lado da Maria Laura.</p>
-          </div>
+          <header class="section-header">
+            <span class="badge section-header__badge">Um dia muito especial</span>
+            <h2 class="section-title">Tudo pronto para um dia inesquecível</h2>
+            <p class="section-subtitle">Aqui estão as principais informações para celebrar o primeiro aninho da Maria Laura com a gente.</p>
+          </header>
 
           <div class="info-grid">
-            <article class="info-card"></article>
-            <article class="info-card"></article>
-            <article class="info-card"></article>
+            <article class="card info-card">
+              <div class="info-card__icon">
+                <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                  <path d="M7 3v3M17 3v3M4 9h16M6 5h12a2 2 0 0 1 2 2v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V7a2 2 0 0 1 2-2Z" />
+                  <path d="M8 13h.01M12 13h.01M16 13h.01M8 17h.01M12 17h.01" />
+                </svg>
+              </div>
+              <div class="info-card__content">
+                <h3 class="info-card__title">Quando?</h3>
+                <time class="info-card__value" datetime="2026-08-22">22 de agosto de 2026</time>
+                <p class="info-card__meta">Sábado</p>
+                <time class="info-card__meta" datetime="19:00">19h00</time>
+              </div>
+            </article>
+            <article class="card info-card">
+              <div class="info-card__icon">
+                <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                  <path d="M20 10c0 5-8 11-8 11S4 15 4 10a8 8 0 1 1 16 0Z" />
+                  <circle cx="12" cy="10" r="3" />
+                </svg>
+              </div>
+              <div class="info-card__content">
+                <h3 class="info-card__title">Onde?</h3>
+                <p class="info-card__value">Espaço Alegria &amp; Cia</p>
+                <p class="info-card__meta">Unidade 2 • Osasco - SP</p>
+              </div>
+              <a class="btn btn-secondary info-card__action" href="https://www.google.com/maps/search/?api=1&amp;query=Av.%20Santo%20Ant%C3%B4nio%2C%20222%20-%20Vila%20Osasco%2C%20Osasco%20-%20SP%2C%2006086-065" target="_blank" rel="noopener noreferrer">Ver localização</a>
+            </article>
+            <article class="card info-card">
+              <div class="info-card__icon">
+                <svg aria-hidden="true" viewBox="0 0 24 24" focusable="false">
+                  <path d="M3 16h18l-2-3H5l-2 3Z" />
+                  <path d="M7 13V9c0-2 2-4 5-4s5 2 5 4v4" />
+                  <path d="M9 5 7 3M15 5l2-2" />
+                </svg>
+              </div>
+              <div class="info-card__content">
+                <h3 class="info-card__title">Tema</h3>
+                <p class="info-card__value">Toy Story</p>
+                <p class="info-card__meta">Prepare seu chapéu de cowboy e venha viver essa aventura com a gente!</p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
