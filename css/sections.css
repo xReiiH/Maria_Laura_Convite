@@ -265,3 +265,103 @@
   transform: translateY(calc(var(--space-2) * -1)) rotate(0deg) scale(1.02);
   box-shadow: var(--shadow-lg);
 }
+
+.family-message-section {
+  position: relative;
+  padding-block: var(--space-8);
+  overflow: hidden;
+  background: var(--color-sky-light);
+}
+
+.family-message {
+  display: grid;
+  grid-template-columns: 65fr 35fr;
+  align-items: center;
+  gap: var(--space-7);
+  width: var(--width-full);
+  max-width: var(--container);
+  margin-inline: auto;
+  padding: var(--space-8);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-white);
+  box-shadow: var(--shadow-md);
+}
+
+.family-message__content {
+  display: grid;
+  gap: var(--space-5);
+  max-width: calc(var(--container) / 2);
+}
+
+.family-message__quote {
+  margin: 0;
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-normal);
+}
+
+.family-message__quote p + p {
+  margin-top: var(--space-4);
+}
+
+.family-message__signature {
+  display: grid;
+  gap: var(--space-1);
+  margin-top: var(--space-6);
+}
+
+.family-message__signature span {
+  color: var(--color-text);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+.family-message__signature strong {
+  color: var(--color-title);
+  font-family: var(--font-title);
+  font-size: var(--font-size-lg);
+  line-height: var(--line-height-tight);
+}
+
+.family-message__visual {
+  position: relative;
+  display: grid;
+  place-items: center;
+  min-height: calc(var(--space-8) * 5);
+}
+
+.family-message__heart {
+  color: var(--color-red);
+  font-family: var(--font-title);
+  font-size: calc(var(--font-size-2xl) * 4);
+  line-height: var(--line-height-tight);
+}
+
+.family-message__stars {
+  position: absolute;
+  inset: 0;
+  color: var(--color-yellow);
+  font-size: var(--font-size-xl);
+  opacity: 0.65;
+}
+
+.family-message__stars span {
+  position: absolute;
+}
+
+.family-message__stars span:nth-child(1) {
+  top: var(--space-6);
+  left: var(--space-5);
+}
+
+.family-message__stars span:nth-child(2) {
+  top: var(--space-8);
+  right: var(--space-4);
+}
+
+.family-message__stars span:nth-child(3) {
+  right: var(--space-6);
+  bottom: var(--space-5);
+}
