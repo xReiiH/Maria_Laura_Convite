@@ -52,11 +52,32 @@
     });
   };
 
-  const createSuccessCard = () => {
+  const normalizeAttendance = (attendanceValue) => String(attendanceValue)
+    .trim()
+    .toLowerCase()
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "");
+
+  const updateSuccessCard = (successCard, attendanceValue) => {
+    const isConfirmed = normalizeAttendance(attendanceValue) === "sim";
+    const title = successCard.querySelector("[data-rsvp-success-title]");
+    const firstMessage = successCard.querySelector("[data-rsvp-success-first-message]");
+    const secondMessage = successCard.querySelector("[data-rsvp-success-second-message]");
+
+    title.textContent = isConfirmed ? "🎉 Presença confirmada!" : "Resposta registrada";
+    firstMessage.textContent = isConfirmed ? "Obrigado pela confirmação." : "Obrigado por nos avisar.";
+    secondMessage.textContent = isConfirmed
+      ? "Estamos muito felizes por compartilhar esse momento com você."
+      : "Sentiremos sua falta, mas agradecemos muito pelo carinho.";
+
+    return title;
+  };
+
+  const createSuccessCard = (attendanceValue) => {
     let successCard = formCard.querySelector(".rsvp-success");
 
     if (successCard) {
-      return successCard;
+      return { successCard, title: updateSuccessCard(successCard, attendanceValue) };
     }
 
     successCard = document.createElement("article");
@@ -66,13 +87,14 @@
     successCard.setAttribute("aria-live", "polite");
 
     const title = document.createElement("h3");
-    title.textContent = "🎉 Presença registrada!";
+    title.dataset.rsvpSuccessTitle = "";
+    title.tabIndex = -1;
 
     const firstMessage = document.createElement("p");
-    firstMessage.textContent = "Obrigado pela confirmação.";
+    firstMessage.dataset.rsvpSuccessFirstMessage = "";
 
     const secondMessage = document.createElement("p");
-    secondMessage.textContent = "Estamos muito felizes por compartilhar esse momento com você.";
+    secondMessage.dataset.rsvpSuccessSecondMessage = "";
 
     const editButton = document.createElement("button");
     editButton.type = "button";
@@ -87,7 +109,7 @@
     successCard.append(title, firstMessage, secondMessage, editButton);
     formCard.append(successCard);
 
-    return successCard;
+    return { successCard, title: updateSuccessCard(successCard, attendanceValue) };
   };
 
   const validateForm = () => {
@@ -168,9 +190,9 @@
       setSubmitting(false);
       form.hidden = true;
 
-      const successCard = createSuccessCard();
+      const { successCard, title } = createSuccessCard(payload.presenca);
       successCard.hidden = false;
-      successCard.focus();
+      title.focus();
     } catch (error) {
       setSubmitting(false);
       status.textContent = "Não foi possível registrar sua confirmação. Verifique sua conexão e tente novamente.";
