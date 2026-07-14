@@ -370,6 +370,7 @@
   position: relative;
   padding-block: var(--space-8);
   overflow: hidden;
+  background: var(--color-cloud);
 }
 
 .rsvp-layout {
@@ -392,21 +393,73 @@
   display: grid;
   gap: var(--space-2);
   margin-top: var(--space-3);
+  padding: var(--space-5);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-sky-light);
+}
+
+.rsvp-intro__note strong {
+  color: var(--color-title);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+}
+
+.rsvp-intro__note span {
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
 }
 
 .rsvp-card {
   display: grid;
   width: var(--width-full);
+  padding: var(--space-7);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-xl);
+  background: var(--color-white);
+  box-shadow: var(--shadow-md);
 }
 
 .rsvp-form {
   display: grid;
   gap: var(--space-6);
+  width: var(--width-full);
 }
 
 .form-field {
   display: grid;
   gap: var(--space-2);
+}
+
+.form-field label,
+.form-field legend {
+  color: var(--color-title);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  font-weight: var(--font-weight-semibold);
+  line-height: var(--line-height-normal);
+}
+
+.form-field input[type="text"] {
+  width: var(--width-full);
+  min-height: calc(var(--space-7) + var(--space-2));
+  padding-inline: var(--space-4);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-cloud);
+  color: var(--color-text);
+  font-family: var(--font-body);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-normal);
+  transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
+}
+
+.form-field input[type="text"]:focus-visible {
+  border-color: var(--color-blue);
+  outline: var(--border-width) solid var(--color-blue);
+  outline-offset: var(--space-1);
+  box-shadow: var(--shadow-sm);
 }
 
 .form-field--options {
@@ -421,12 +474,50 @@
   display: flex;
   align-items: center;
   gap: var(--space-2);
+  width: var(--width-full);
+  padding: var(--space-4);
+  border: var(--border-width) solid var(--color-border);
+  border-radius: var(--radius-md);
+  background: var(--color-cloud);
+  cursor: pointer;
+  transition: background var(--transition-normal), border-color var(--transition-normal);
+}
+
+.form-option input {
+  accent-color: var(--color-red);
+}
+
+.form-option input:focus-visible {
+  outline: var(--border-width) solid var(--color-blue);
+  outline-offset: var(--space-1);
+}
+
+.form-option:hover {
+  border-color: var(--color-blue);
+  background: var(--color-sky-light);
+}
+
+.form-option:has(input:checked) {
+  border-color: var(--color-blue);
+  background: var(--color-sky-light);
+}
+
+.form-option:has(input:focus-visible) {
+  outline: var(--border-width) solid var(--color-blue);
+  outline-offset: var(--space-1);
 }
 
 .rsvp-form__submit {
   justify-self: start;
+  min-height: calc(var(--space-7) + var(--space-2));
+  padding-inline: var(--space-7);
+  box-shadow: var(--shadow-md);
 }
 
 .rsvp-form__status {
   min-height: var(--space-6);
+  margin: var(--space-2) 0 0;
+  color: var(--color-text);
+  font-size: var(--font-size-sm);
+  line-height: var(--line-height-normal);
 }
