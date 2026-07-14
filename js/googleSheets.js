@@ -1,9 +1,9 @@
 // Responsabilidade: enviar respostas RSVP ao Google Apps Script configurado.
 window.GoogleSheets = (() => {
-  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbw5OCKrntwsXI5wf1STPFaBCdoBxHZ2Dpa2tb-8pFwgtH1y4OzvXOkalk3yIImo-ZEi/exec";
+  const WEB_APP_URL = "https://script.google.com/macros/s/AKfycbxMQDBqOWhhZa4WpPZafyImruGQakj94qsnnYD56dD6Jonr2-O3jyeLYGHrHN8VQ3mg/exec";
   const REQUEST_TIMEOUT = 12000;
 
-  const isConfigured = () => WEB_APP_URL !== "https://script.google.com/macros/s/AKfycbw5OCKrntwsXI5wf1STPFaBCdoBxHZ2Dpa2tb-8pFwgtH1y4OzvXOkalk3yIImo-ZEi/exec";
+  const isConfigured = () => WEB_APP_URL !== "https://script.google.com/macros/s/AKfycbxMQDBqOWhhZa4WpPZafyImruGQakj94qsnnYD56dD6Jonr2-O3jyeLYGHrHN8VQ3mg/exec";
 
   const send = async (payload) => {
     if (!isConfigured()) {
