@@ -1,0 +1,117 @@
+<script>
+  (() => {
+    const state = { data: null };
+    const elements = {
+      refreshButton: document.getElementById("refresh-button"),
+      updateStatus: document.getElementById("update-status"),
+      searchInput: document.getElementById("search-input"),
+      attendanceFilter: document.getElementById("attendance-filter"),
+      loadingState: document.getElementById("loading-state"),
+      emptyState: document.getElementById("empty-state"),
+      errorState: document.getElementById("error-state"),
+      tableWrapper: document.getElementById("table-wrapper"),
+      responsesBody: document.getElementById("responses-body"),
+      total: document.getElementById("stat-total"),
+      confirmed: document.getElementById("stat-confirmed"),
+      absent: document.getElementById("stat-absent"),
+      rate: document.getElementById("stat-rate")
+    };
+
+    const setLoading = (isLoading) => {
+      elements.refreshButton.disabled = isLoading;
+      elements.refreshButton.textContent = isLoading ? "Atualizando…" : "Atualizar dados";
+      elements.loadingState.hidden = !isLoading;
+
+      if (isLoading) {
+        elements.errorState.hidden = true;
+      }
+    };
+
+    const getStatus = (presence) => {
+      if (presence === "Sim") {
+        return { label: "Confirmado", className: "status--confirmed" };
+      }
+
+      if (presence === "Não") {
+        return { label: "Não irá", className: "status--absent" };
+      }
+
+      return { label: "Não informado", className: "status--unknown" };
+    };
+
+    const getFilteredResponses = () => {
+      const query = elements.searchInput.value.trim().toLocaleLowerCase("pt-BR");
+      const filter = elements.attendanceFilter.value;
+      const responses = state.data?.respostas || [];
+
+      return responses.filter((response) => {
+        const matchesName = !query || response.nome.toLocaleLowerCase("pt-BR").includes(query);
+        const matchesPresence = filter === "all" || (filter === "sim" && response.presenca === "Sim") || (filter === "nao" && response.presenca === "Não");
+        return matchesName && matchesPresence;
+      });
+    };
+
+    const renderStats = (data) => {
+      elements.total.textContent = String(data.total);
+      elements.confirmed.textContent = String(data.confirmados);
+      elements.absent.textContent = String(data.ausentes);
+      elements.rate.textContent = `${data.percentualConfirmacao}%`;
+    };
+
+    const renderResponses = () => {
+      const responses = getFilteredResponses();
+      elements.responsesBody.replaceChildren();
+      elements.emptyState.hidden = responses.length !== 0;
+      elements.tableWrapper.hidden = responses.length === 0;
+
+      responses.forEach((response) => {
+        const row = document.createElement("tr");
+        const dateCell = document.createElement("td");
+        const nameCell = document.createElement("td");
+        const presenceCell = document.createElement("td");
+        const status = getStatus(response.presenca);
+        const statusLabel = document.createElement("span");
+
+        dateCell.textContent = response.dataHora;
+        nameCell.textContent = response.nome;
+        statusLabel.className = `status ${status.className}`;
+        statusLabel.textContent = status.label;
+        presenceCell.append(statusLabel);
+        row.append(dateCell, nameCell, presenceCell);
+        elements.responsesBody.append(row);
+      });
+    };
+
+    const updateTimestamp = () => {
+      const formatter = new Intl.DateTimeFormat("pt-BR", { dateStyle: "short", timeStyle: "short" });
+      elements.updateStatus.textContent = `Última atualização: ${formatter.format(new Date())}`;
+    };
+
+    const handleSuccess = (data) => {
+      state.data = data;
+      renderStats(data);
+      renderResponses();
+      updateTimestamp();
+      setLoading(false);
+    };
+
+    const handleFailure = () => {
+      setLoading(false);
+      elements.errorState.hidden = false;
+      elements.updateStatus.textContent = "Não foi possível atualizar os dados.";
+    };
+
+    const loadDashboard = () => {
+      setLoading(true);
+      google.script.run
+        .withSuccessHandler(handleSuccess)
+        .withFailureHandler(handleFailure)
+        .getDashboardData();
+    };
+
+    elements.searchInput.addEventListener("input", renderResponses);
+    elements.attendanceFilter.addEventListener("change", renderResponses);
+    elements.refreshButton.addEventListener("click", loadDashboard);
+    loadDashboard();
+  })();
+</script>

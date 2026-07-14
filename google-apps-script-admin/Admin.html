@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <base target="_top">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmações — Maria Laura</title>
+    <?!= include("AdminStyles"); ?>
+  </head>
+  <body>
+    <main class="admin-shell">
+      <header class="admin-header">
+        <div>
+          <p class="admin-eyebrow">Painel privado</p>
+          <h1>Confirmações da Maria Laura</h1>
+          <p>Acompanhe as respostas recebidas pelo convite.</p>
+        </div>
+        <button class="button button--primary" id="refresh-button" type="button">
+          Atualizar dados
+        </button>
+      </header>
+
+      <p class="update-status" id="update-status" aria-live="polite">Carregando confirmações…</p>
+
+      <section class="stats-grid" aria-label="Resumo das confirmações">
+        <article class="stat-card">
+          <span>Total de respostas</span>
+          <strong id="stat-total">—</strong>
+        </article>
+        <article class="stat-card stat-card--confirmed">
+          <span>Confirmados</span>
+          <strong id="stat-confirmed">—</strong>
+        </article>
+        <article class="stat-card stat-card--absent">
+          <span>Não irão</span>
+          <strong id="stat-absent">—</strong>
+        </article>
+        <article class="stat-card">
+          <span>Taxa de confirmação</span>
+          <strong id="stat-rate">—</strong>
+        </article>
+      </section>
+
+      <section class="responses-panel" aria-labelledby="responses-title">
+        <div class="panel-header">
+          <div>
+            <h2 id="responses-title">Respostas</h2>
+            <p>As respostas mais recentes aparecem primeiro.</p>
+          </div>
+          <div class="filters" aria-label="Filtrar respostas">
+            <div class="field">
+              <label for="search-input">Buscar por nome</label>
+              <input id="search-input" type="search" autocomplete="off" placeholder="Digite um nome">
+            </div>
+            <div class="field">
+              <label for="attendance-filter">Presença</label>
+              <select id="attendance-filter">
+                <option value="all">Todos</option>
+                <option value="sim">Confirmados</option>
+                <option value="nao">Não irão</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <div class="loading-state" id="loading-state" role="status">
+          Carregando dados do painel…
+        </div>
+        <div class="empty-state" id="empty-state" hidden>
+          Nenhuma confirmação encontrada com os filtros atuais.
+        </div>
+        <div class="error-state" id="error-state" role="alert" hidden>
+          Não foi possível carregar as confirmações. Tente atualizar novamente.
+        </div>
+
+        <div class="table-wrapper" id="table-wrapper" hidden>
+          <table>
+            <caption>Lista de confirmações recebidas</caption>
+            <thead>
+              <tr>
+                <th scope="col">Data/Hora</th>
+                <th scope="col">Nome</th>
+                <th scope="col">Presença</th>
+              </tr>
+            </thead>
+            <tbody id="responses-body"></tbody>
+          </table>
+        </div>
+      </section>
+    </main>
+
+    <?!= include("AdminScripts"); ?>
+  </body>
+</html>
